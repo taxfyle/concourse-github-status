@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/github-status/out'
+
+status = GithubStatus::Out.new
+
+unless status.run
+  STDERR.puts "Failed to update status"
+  abort
+end
