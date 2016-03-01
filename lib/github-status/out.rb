@@ -65,7 +65,7 @@ module GitHubStatus
 
     Contract None => Git::Repository
     def git
-      @git ||= Git.open "#{working_path}/#{path}"
+      @git ||= Git.open "#{workdir}/#{path}"
     rescue ArgumentError
       STDERR.puts "#{path} is not a git repository"
       abort
