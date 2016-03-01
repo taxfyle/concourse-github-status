@@ -2,7 +2,7 @@
 
 require_relative '../lib/github-status/out'
 
-status = GithubStatus::Out.new
+status = GitHubStatus::Out.new
 
 unless status.run
   STDERR.puts "Failed to update status"
