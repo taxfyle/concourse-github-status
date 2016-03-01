@@ -13,6 +13,14 @@ module GitHubStatus
         STDERR.puts 'Params is missing path'
         abort
       end
+
+      Contract None => String
+      def state
+        @state ||= params.fetch 'state'
+      rescue KeyError
+        STDERR.puts 'Params is missing state'
+        abort
+      end
     end
   end
 end
