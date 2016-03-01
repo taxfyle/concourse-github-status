@@ -2,6 +2,7 @@
 
 require 'concourse-fuselage'
 require 'contracts'
+require 'git'
 require 'octokit'
 
 module GitHubStatus
