@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name          = 'concourse-github-status'
-  gem.version       = '0.2.1'
+  gem.version       = '0.2.2'
   gem.authors       = ['Chris Olstrom']
   gem.license       = 'Apache-2.0'
   gem.summary       = 'GitHub Status resource for Concourse'
