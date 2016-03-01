@@ -21,6 +21,11 @@ module GitHubStatus
         STDERR.puts 'Params is missing state'
         abort
       end
+
+      Contract None => String
+      def context
+        @context ||= params.fetch 'context', 'concourse'
+      end
     end
   end
 end
