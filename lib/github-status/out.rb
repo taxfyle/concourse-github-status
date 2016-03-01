@@ -7,6 +7,11 @@ require 'octokit'
 
 module GitHubStatus
   class Out < Fuselage::Out
+    Contract None => HashOf[String, String]
+    def version
+      { 'context@sha' => "#{context}@#{sha}" }
+    end
+
     Contract None => String
     def repo
       @repo ||= source.fetch 'repo'
@@ -74,11 +79,6 @@ module GitHubStatus
     Contract None => String
     def sha
       @repo ||= git.revparse 'HEAD'
-    end
-
-    Contract None => HashOf[String, String]
-    def version
-      { 'context@sha' => "#{context}@#{sha}" }
     end
 
     Contract None => Octokit::Client
