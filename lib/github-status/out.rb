@@ -16,10 +16,10 @@ module GitHubStatus
     end
 
     Contract None => String
-    def github_access_token
-      @github_access_token ||= source.fetch 'github_access_token'
+    def access_token
+      @access_token ||= source.fetch 'access_token'
     rescue KeyError
-      STDERR.puts 'Source is missing github_access_token'
+      STDERR.puts 'Source is missing access_token'
       abort
     end
 
@@ -83,7 +83,7 @@ module GitHubStatus
 
     Contract None => Octokit::Client
     def github
-      @github ||= Octokit::Client.new access_token: github_access_token
+      @github ||= Octokit::Client.new access_token: access_token
     end
 
     Contract None => Sawyer::Resource
