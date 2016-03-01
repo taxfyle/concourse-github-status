@@ -24,14 +24,6 @@ module GitHubStatus
     end
 
     Contract None => String
-    def access_token
-      @access_token ||= source.fetch 'access_token'
-    rescue KeyError
-      STDERR.puts 'Source is missing access_token'
-      abort
-    end
-
-    Contract None => String
     def state
       @state ||= params.fetch 'state'
     rescue KeyError
