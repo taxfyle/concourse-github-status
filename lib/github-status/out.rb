@@ -26,11 +26,6 @@ module GitHubStatus
     end
 
     Contract None => String
-    def description
-      @description ||= params.fetch 'description', ''
-    end
-
-    Contract None => String
     def target_url
       @target_url ||= "#{atc_external_url}/builds/#{build_id}"
     end
