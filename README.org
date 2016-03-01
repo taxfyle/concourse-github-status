@@ -15,7 +15,7 @@ Add the resource to your pipeline's ~resource_types~ (requires Concourse 0.74.0+
     - name: github-status
       type: docker-image
       source:
-        repository: colstrom/concourse-github-status
+        repository: resource/github-status
 #+END_SRC
 
 * Source Configuration
