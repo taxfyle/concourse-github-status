@@ -63,7 +63,7 @@ module GitHubStatus
       }
     end
 
-    Contract None => Git::Repository
+    Contract None => Git::Base
     def git
       @git ||= Git.open "#{workdir}/#{path}"
     rescue ArgumentError
