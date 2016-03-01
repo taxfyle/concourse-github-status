@@ -4,9 +4,12 @@ require 'concourse-fuselage'
 require 'contracts'
 require 'git'
 require 'octokit'
+require_relative 'core'
 
 module GitHubStatus
   class Out < Fuselage::Out
+    include Core
+
     Contract None => Sawyer::Resource
     def update!
       github.create_status repo, sha, state, options
