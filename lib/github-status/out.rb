@@ -26,14 +26,6 @@ module GitHubStatus
     end
 
     Contract None => String
-    def state
-      @state ||= params.fetch 'state'
-    rescue KeyError
-      STDERR.puts 'Params is missing state'
-      abort
-    end
-
-    Contract None => String
     def context
       @context ||= params.fetch 'context', 'concourse'
     end
