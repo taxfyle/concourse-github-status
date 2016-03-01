@@ -34,14 +34,6 @@ module GitHubStatus
     end
 
     Contract None => String
-    def path
-      @path ||= params.fetch 'path'
-    rescue KeyError
-      STDERR.puts 'Params is missing path'
-      abort
-    end
-
-    Contract None => String
     def context
       @context ||= params.fetch 'context', 'concourse'
     end
