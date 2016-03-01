@@ -26,6 +26,11 @@ module GitHubStatus
       def context
         @context ||= params.fetch 'context', 'concourse'
       end
+
+      Contract None => String
+      def description
+        @description ||= params.fetch 'description', ''
+      end
     end
   end
 end
