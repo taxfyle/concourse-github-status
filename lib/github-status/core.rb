@@ -5,6 +5,6 @@ module GitHubStatus
   module Core
     include ::Contracts::Core
     include ::Contracts::Builtin
-    include ::Support::Source
+    include Support::Source
   end
 end
