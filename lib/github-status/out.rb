@@ -49,7 +49,7 @@ module GitHubStatus
 
     Contract None => String
     def sha
-      @repo ||= git.revparse 'HEAD'
+      @sha ||= git.revparse 'HEAD'
     end
 
     Contract None => Octokit::Client
