@@ -7,6 +7,14 @@ require 'octokit'
 
 module GitHubStatus
   class Out < Fuselage::Out
+    Contract None => Sawyer::Resource
+    def update!
+      github.create_status repo, sha, state, options
+    rescue Octokit::Error => error
+      STDERR.puts error.message
+      abort
+    end
+
     Contract None => HashOf[String, String]
     def version
       { 'context@sha' => "#{context}@#{sha}" }
@@ -84,14 +92,6 @@ module GitHubStatus
     Contract None => Octokit::Client
     def github
       @github ||= Octokit::Client.new access_token: access_token
-    end
-
-    Contract None => Sawyer::Resource
-    def update!
-      github.create_status repo, sha, state, options
-    rescue Octokit::Error => error
-      STDERR.puts error.message
-      abort
     end
   end
 end
