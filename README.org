@@ -1,0 +1,54 @@
+#+TITLE: GitHub Status
+#+SUBTITLE: A Custom Resource for Concourse
+#+LATEX: \pagebreak
+
+* Overview
+
+Create and update GitHub statuses from Concourse.
+
+* Usage
+
+Add the resource to your pipeline's ~resource_types~ (requires Concourse 0.74.0+)
+
+#+BEGIN_SRC yaml
+  resource_types:
+    - name: github-status
+      type: docker-image
+      source:
+        repository: colstrom/concourse-github-status
+#+END_SRC
+
+* Source Configuration
+
+|--------------+----------+---------------------------------------------|
+| Name         | Required | Description                                 |
+|--------------+----------+---------------------------------------------|
+| repo         | Yes      | The GitHub repository in ~user/repo~ format |
+| access_token | Yes      | The access token to use with the GitHub API |
+|--------------+----------+---------------------------------------------|
+
+* Behaviour
+
+** ~out~ Update the status for a commit
+
+*** Parameters
+
+|-------------+----------+-----------+--------------------------------------------|
+| Name        | Required | Default   | Description                                |
+|-------------+----------+-----------+--------------------------------------------|
+| path        | Yes      |           | Relative path to the repository            |
+| state       | Yes      |           | One of ~pending~, ~success~, or ~failure~  |
+| context     | No       | concourse | The ~context~ for the status being updated |
+| description | No       |           | A description of the context.              |
+|-------------+----------+-----------+--------------------------------------------|
+
+** ~check~ Not Implemented
+** ~in~ Not Implemented
+
+* License
+
+Apache 2.0 License, see ~LICENSE.txt~ for details.
+
+* Contributors
+
+- [[https://colstrom.github.io/][Chris Olstrom]] | [[mailto:chris@olstrom.com][e-mail]] | [[https://twitter.com/ChrisOlstrom][Twitter]]
