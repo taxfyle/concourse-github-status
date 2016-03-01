@@ -24,14 +24,6 @@ module GitHubStatus
     end
 
     Contract None => String
-    def repo
-      @repo ||= source.fetch 'repo'
-    rescue KeyError
-      STDERR.puts 'Source is missing repo'
-      abort
-    end
-
-    Contract None => String
     def access_token
       @access_token ||= source.fetch 'access_token'
     rescue KeyError
