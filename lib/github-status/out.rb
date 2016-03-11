@@ -41,14 +41,6 @@ module GitHubStatus
       }
     end
 
-    Contract None => Git::Base
-    def git
-      @git ||= Git.open "#{workdir}/#{path}"
-    rescue ArgumentError
-      STDERR.puts "#{path} is not a git repository"
-      abort
-    end
-
     Contract None => String
     def sha
       @sha ||= git.revparse 'HEAD'
