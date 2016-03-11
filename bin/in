@@ -1,3 +1,10 @@
 #!/usr/bin/env ruby
 
-STDERR.puts 'Not Implemented'
+require 'github-status/in'
+
+fetch = GitHubStatus::In.new
+
+unless fetch.run
+  STDERR.puts "Failed to fetch status"
+  abort
+end
