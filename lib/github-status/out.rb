@@ -2,7 +2,6 @@
 
 require 'concourse-fuselage'
 require 'contracts'
-require 'git'
 require_relative 'core'
 require_relative 'support/params'
 require_relative 'support/git'
