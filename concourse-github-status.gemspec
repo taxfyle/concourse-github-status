@@ -5,6 +5,7 @@ Gem::Specification.new do |gem|
   gem.summary       = 'GitHub Status resource for Concourse'
 
   gem.author        = 'Chris Olstrom'
+  gem.email         = 'chris@olstrom.com'
 
   gem.files         = `git ls-files`.split("\n")
   gem.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
