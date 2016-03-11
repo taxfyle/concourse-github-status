@@ -7,12 +7,14 @@ require 'octokit'
 require_relative 'core'
 require_relative 'support/params'
 require_relative 'support/git'
+require_relative 'support/github'
 
 module GitHubStatus
   class Out < Fuselage::Out
     include Core
     include Support::Params
     include Support::Git
+    include Support::GitHub
 
     Contract None => Sawyer::Resource
     def update!
