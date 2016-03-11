@@ -14,6 +14,11 @@ module GitHubStatus
         STDERR.puts "#{path} is not a git repository"
         abort
       end
+
+      Contract None => String
+      def sha
+        @sha ||= git.revparse 'HEAD'
+      end
     end
   end
 end
