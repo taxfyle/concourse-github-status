@@ -6,6 +6,14 @@ module GitHubStatus
     module Git
       include ::Contracts::Core
       include ::Contracts::Builtin
+
+      Contract None => Git::Base
+      def git
+        @git ||= Git.open "#{workdir}/#{path}"
+      rescue ArgumentError
+        STDERR.puts "#{path} is not a git repository"
+        abort
+      end
     end
   end
 end
