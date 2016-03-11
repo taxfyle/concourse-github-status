@@ -6,6 +6,7 @@ module GitHubStatus
     module GitHub
       include ::Contracts::Core
       include ::Contracts::Builtin
+      include Source
 
       Contract None => Octokit::Client
       def github
