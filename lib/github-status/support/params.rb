@@ -14,7 +14,7 @@ module GitHubStatus
         abort
       end
 
-      Contract None => String
+      Contract None => Enum['success', 'pending', 'failure']
       def state
         @state ||= params.fetch 'state'
       rescue KeyError
