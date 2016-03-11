@@ -42,10 +42,5 @@ module GitHubStatus
         description: description
       }
     end
-
-    Contract None => Octokit::Client
-    def github
-      @github ||= Octokit::Client.new access_token: access_token
-    end
   end
 end
