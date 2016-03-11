@@ -1,6 +1,8 @@
 FROM gems/concourse-fuselage
 
-RUN apk-install git \
+RUN apk-install git ca-certificates openssl-dev \
+    && update-ca-certificates \
+    && apk del openssl-dev \
     && gem-install concourse-github-status
 
 WORKDIR /opt/resource
