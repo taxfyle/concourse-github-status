@@ -3,7 +3,6 @@
 require 'concourse-fuselage'
 require 'contracts'
 require 'git'
-require 'octokit'
 require_relative 'core'
 require_relative 'support/params'
 require_relative 'support/git'
