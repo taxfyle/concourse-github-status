@@ -6,6 +6,7 @@ Gem::Specification.new do |gem|
 
   gem.author        = 'Chris Olstrom'
   gem.email         = 'chris@olstrom.com'
+  gem.homepage      = 'https://github.com/colstrom/concourse-github-status'
 
   gem.files         = `git ls-files`.split("\n")
   gem.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
