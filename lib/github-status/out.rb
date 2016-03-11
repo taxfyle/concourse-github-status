@@ -41,11 +41,6 @@ module GitHubStatus
       }
     end
 
-    Contract None => String
-    def sha
-      @sha ||= git.revparse 'HEAD'
-    end
-
     Contract None => Octokit::Client
     def github
       @github ||= Octokit::Client.new access_token: access_token
