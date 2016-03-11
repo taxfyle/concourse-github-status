@@ -4,7 +4,7 @@ Gem::Specification.new do |gem|
   gem.license       = 'Apache-2.0'
   gem.summary       = 'GitHub Status resource for Concourse'
 
-  gem.authors       = ['Chris Olstrom']
+  gem.author        = 'Chris Olstrom'
 
   gem.files         = `git ls-files`.split("\n")
   gem.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
