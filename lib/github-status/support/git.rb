@@ -7,7 +7,7 @@ module GitHubStatus
       include ::Contracts::Core
       include ::Contracts::Builtin
 
-      Contract None => Git::Base
+      Contract None => ::Git::Base
       def git
         @git ||= Git.open "#{workdir}/#{path}"
       rescue ArgumentError
