@@ -21,6 +21,11 @@ module GitHubStatus
         STDERR.puts 'Source is missing repo'
         abort
       end
+
+      Contract None => String
+      def branch
+        @branch ||= source.fetch('branch') { 'master' }
+      end
     end
   end
 end
