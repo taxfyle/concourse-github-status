@@ -52,7 +52,8 @@ Add the resource to your pipeline's ~resource_types~ (requires Concourse 0.74.0+
 
 *** Parameters
 
-Fetches the status for ~context~ for the current commit of the repository at ~path~.
+Fetches the state of ~context~ for the current commit of the repository at
+~path~, and write it to ~{context}.state~
 
 |-------------+----------+-----------+--------------------------------------------|
 | Name        | Required | Default   | Description                                |
