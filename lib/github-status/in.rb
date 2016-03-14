@@ -12,6 +12,7 @@ module GitHubStatus
     include Support::Git
     include Support::GitHub
 
+    Contract None => Maybe[String]
     def state
       github
         .statuses(repo, sha)
