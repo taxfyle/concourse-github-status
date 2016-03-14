@@ -42,7 +42,12 @@ Add the resource to your pipeline's ~resource_types~ (requires Concourse 0.74.0+
 | description | No       |           | A description of the context.              |
 |-------------+----------+-----------+--------------------------------------------|
 
-** ~check~ Not Implemented
+** ~check~ Get a list of available statuses
+
+*** Parameters
+
+- None
+
 ** ~in~ Not Implemented
 
 * License
