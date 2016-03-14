@@ -10,8 +10,8 @@ module GitHubStatus
     include Support::Params
     include Support::GitHub
 
-    Contract HashOf[String, String] => String
-    def sha(version)
+    Contract None => String
+    def sha
       @sha ||= version.fetch('context@sha') { commit }.split('@').last
     end
 
