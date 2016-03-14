@@ -1,6 +1,8 @@
+require_relative 'lib/github-status'
+
 Gem::Specification.new do |gem|
   gem.name          = 'concourse-github-status'
-  gem.version       = '0.2.3'
+  gem.version       = GitHubStatus::VERSION
   gem.license       = 'Apache-2.0'
   gem.summary       = 'GitHub Status resource for Concourse'
 
