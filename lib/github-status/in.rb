@@ -12,6 +12,11 @@ module GitHubStatus
     include Support::Git
     include Support::GitHub
 
+    Contract HashOf[String, String] => String
+    def sha(version)
+      @sha ||= version.fetch('context@sha') { commit }.split('@').last
+    end
+
     Contract None => Maybe[String]
     def state
       github
