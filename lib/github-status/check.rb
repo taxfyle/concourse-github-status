@@ -8,7 +8,7 @@ module GitHubStatus
     include Support::GitHub
 
     Contract HashOf[String, String] => String
-    def to_sha(version)
+    def sha(version)
       @sha ||= version.fetch('context@sha') { commit }.split('@').last
     end
 
@@ -30,7 +30,7 @@ module GitHubStatus
     Contract HashOf[String, String] => ArrayOf[HashOf[String, String]]
     def since(version)
       github
-        .commits_since(repo, date(to_sha(version)))
+        .commits_since(repo, date(sha(version)))
         .map { |commit| { 'context@sha' => "concourseci@#{commit[:sha]}" } }
     end
   end
