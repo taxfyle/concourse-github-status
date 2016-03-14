@@ -21,6 +21,7 @@ module GitHubStatus
         .first
     end
 
+    Contract None => Num
     def fetch!
       File.write "#{workdir}/#{context}.state", state
     end
