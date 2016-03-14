@@ -12,7 +12,7 @@ module GitHubStatus
     include Support::Git
     include Support::GitHub
 
-    def status
+    def state
       github
         .statuses(repo, sha)
         .select { |status| status.context == context }
