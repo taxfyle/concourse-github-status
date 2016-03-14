@@ -48,7 +48,18 @@ Add the resource to your pipeline's ~resource_types~ (requires Concourse 0.74.0+
 
 - None
 
-** ~in~ Not Implemented
+** ~in~ Fetch a status
+
+*** Parameters
+
+Fetches the status for ~context~ for the current commit of the repository at ~path~.
+
+|-------------+----------+-----------+--------------------------------------------|
+| Name        | Required | Default   | Description                                |
+|-------------+----------+-----------+--------------------------------------------|
+| path        | Yes      |           | Relative path to the repository            |
+| context     | No       | concourse | The ~context~ for the status being updated |
+|-------------+----------+-----------+--------------------------------------------|
 
 * License
 
