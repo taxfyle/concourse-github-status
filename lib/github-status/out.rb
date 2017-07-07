@@ -14,9 +14,20 @@ module GitHubStatus
     include Support::Git
     include Support::GitHub
 
-    Contract None => Sawyer::Resource
+    Contract None => Or[Sawyer::Resource, ArrayOf[Sawyer::Resource]]
     def update!
-      github.create_status repo, sha, state, options
+      if statuses.empty?
+        github.create_status repo, sha, state, options
+      else
+        statuses.map do |status|
+          options = {
+            context: status["context"],
+            target_url: target_url,
+            description: status["description"]
+          }
+          github.create_status repo, sha, status["state"], options
+        end
+      end
     rescue Octokit::Error => error
       STDERR.puts error.message
       abort
