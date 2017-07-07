@@ -31,6 +31,11 @@ module GitHubStatus
       def description
         @description ||= params.fetch 'description', ''
       end
+
+      Contract None => Array
+      def statuses
+        @statuses ||= params.fetch 'statuses', []
+      end
     end
   end
 end
