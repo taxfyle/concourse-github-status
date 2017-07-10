@@ -33,10 +33,33 @@ Add the resource to your pipeline's ~resource_types~ (requires Concourse 0.74.0+
 
 *** Parameters
 
+To set a single status for the current commit of the repository specify these parameters:
+
 |-------------+----------+-----------+--------------------------------------------|
 | Name        | Required | Default   | Description                                |
 |-------------+----------+-----------+--------------------------------------------|
 | path        | Yes      |           | Relative path to the repository            |
+| state       | Yes      |           | One of ~pending~, ~success~, or ~failure~  |
+| context     | No       | concourse | The ~context~ for the status being updated |
+| description | No       |           | A description of the context.              |
+|-------------+----------+-----------+--------------------------------------------|
+
+It is also possible to set multiple statuses at the same time. This is useful for adding multiple ~pending~ statuses
+initially which will be updated by later jobs to the corresponding state, for example.
+This can be done by specifying a ~statuses~ array:
+
+|-------------+----------+-----------+--------------------------------------------|
+| Name        | Required | Default   | Description                                |
+|-------------+----------+-----------+--------------------------------------------|
+| path        | Yes      |           | Relative path to the repository            |
+| statuses    | Yes      |           | Array of status objects                    |
+|-------------+----------+-----------+--------------------------------------------|
+
+Each of the status objects supports the following parameters:
+
+|-------------+----------+-----------+--------------------------------------------|
+| Name        | Required | Default   | Description                                |
+|-------------+----------+-----------+--------------------------------------------|
 | state       | Yes      |           | One of ~pending~, ~success~, or ~failure~  |
 | context     | No       | concourse | The ~context~ for the status being updated |
 | description | No       |           | A description of the context.              |
