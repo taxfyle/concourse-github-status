@@ -1,21 +1,22 @@
-require_relative 'lib/github-status'
-
 Gem::Specification.new do |gem|
+  tag = `git describe --tags --abbrev=0`.chomp
+
   gem.name          = 'concourse-github-status'
-  gem.version       = GitHubStatus::VERSION
-  gem.licenses      = ['MIT']
+  gem.homepage      = 'https://github.com/colstrom/concourse-github-status'
   gem.summary       = 'GitHub Status resource for Concourse'
 
-  gem.author        = 'Chris Olstrom'
+  gem.version       = "#{tag}"
+  gem.licenses      = ['MIT']
+  gem.authors       = ['Chris Olstrom']
   gem.email         = 'chris@olstrom.com'
-  gem.homepage      = 'https://github.com/colstrom/concourse-github-status'
 
-  gem.files         = `git ls-files`.split("\n")
-  gem.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
-  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  gem.files         = `git ls-files -z`.split("\x0")
+  gem.executables   = `git ls-files -z -- bin/*`.split("\x0").map { |f| File.basename(f) }
+  gem.test_files    = `git ls-files -z -- {test,spec,features}/*`.split("\x0")
+
   gem.require_paths = ['lib']
 
   gem.add_runtime_dependency 'concourse-fuselage', '~> 0.1', '>= 0.1.0'
-  gem.add_runtime_dependency 'git', '~> 1.3', '>= 1.3.0'
-  gem.add_runtime_dependency 'octokit', '~> 4.2', '>= 4.2.0'
+  gem.add_runtime_dependency 'git',                '~> 1.3', '>= 1.3.0'
+  gem.add_runtime_dependency 'octokit',            '~> 4.2', '>= 4.2.0'
 end
