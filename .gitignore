@@ -1,4 +1,1 @@
-.bundle/**
-pkg/**
-secrets.yaml
-vendor/**
+*.gem
