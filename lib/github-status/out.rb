@@ -21,9 +21,9 @@ module GitHubStatus
       else
         statuses.map do |status|
           options = {
-            context: status["context"],
+            context: status["context"] || "concourse",
             target_url: target_url,
-            description: status["description"]
+            description: status["description"] || ""
           }
           github.create_status repo, sha, status["state"], options
         end
