@@ -3,7 +3,7 @@ require_relative 'lib/github-status'
 Gem::Specification.new do |gem|
   gem.name          = 'concourse-github-status'
   gem.version       = GitHubStatus::VERSION
-  gem.license       = 'Apache-2.0'
+  gem.licenses      = ['MIT']
   gem.summary       = 'GitHub Status resource for Concourse'
 
   gem.author        = 'Chris Olstrom'

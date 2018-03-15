@@ -87,7 +87,8 @@ Fetches the state of ~context~ for the current commit of the repository at
 
 * License
 
-Apache 2.0 License, see ~LICENSE.txt~ for details.
+  ~concourse-github-status~ is available under the [[https://tldrlegal.com/license/mit-license][MIT License]]. See
+  ~LICENSE.txt~ for the full text.
 
 * Contributors
 
