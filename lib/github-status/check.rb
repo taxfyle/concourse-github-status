@@ -12,7 +12,7 @@ module GitHubStatus
       @sha ||= version.fetch('context@sha') { commit }.split('@').last
     end
 
-    Contract None => Time
+    Contract String => Time
     def date(sha)
       @date ||= github.commit(repo, sha).commit.author.date
     end
