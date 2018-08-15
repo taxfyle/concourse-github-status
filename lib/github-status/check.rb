@@ -24,7 +24,7 @@ module GitHubStatus
 
     Contract None => HashOf[String, String]
     def latest
-      { 'context@sha' => "concourseci@#{sha}" }
+      { 'context@sha' => "concourseci@#{commit}" }
     end
 
     Contract HashOf[String, String] => ArrayOf[HashOf[String, String]]
