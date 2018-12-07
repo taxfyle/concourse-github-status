@@ -17,7 +17,7 @@ module GitHubStatus
     Contract None => Or[Sawyer::Resource, ArrayOf[Sawyer::Resource]]
     def update!
       if statuses.empty?
-        github.create_status repo, sha, state, options
+        github.create_status repo, canonical_sha, state, options
       else
         statuses.map do |status|
           options = {
@@ -25,7 +25,7 @@ module GitHubStatus
             target_url: target_url,
             description: status["description"] || ""
           }
-          github.create_status repo, sha, status["state"], options
+          github.create_status repo, canonical_sha, status["state"], options
         end
       end
     rescue Octokit::Error => error
@@ -35,7 +35,7 @@ module GitHubStatus
 
     Contract None => HashOf[String, String]
     def version
-      { 'context@sha' => "#{context}@#{sha}" }
+      { 'context@sha' => "#{context}@#{canonical_sha}" }
     end
 
     Contract None => String
