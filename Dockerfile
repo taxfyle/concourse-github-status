@@ -1,4 +1,4 @@
-FROM gems/concourse-fuselage
+FROM colstrom/concourse-fuselage
 
 RUN apk-install git ca-certificates libressl-dev \
     && update-ca-certificates \
