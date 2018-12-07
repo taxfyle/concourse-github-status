@@ -17,9 +17,11 @@ module GitHubStatus
 
       Contract None => String
       def sha
-        @sha ||= (File.read "#{workdir}/#{path}").chomp
-      rescue Errno::EISDIR
-        @sha ||= git.revparse 'HEAD'
+        @sha ||= if File.file? "#{workdir}/#{path}"
+          File.read("#{workdir}/#{path}").chomp
+        else
+          git.revparse 'HEAD'
+        end
       end
     end
   end
