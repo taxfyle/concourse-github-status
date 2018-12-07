@@ -17,6 +17,8 @@ module GitHubStatus
 
       Contract None => String
       def sha
+        @sha ||= (File.read "#{workdir}/#{path}").chomp
+      rescue Errno::EISDIR
         @sha ||= git.revparse 'HEAD'
       end
     end

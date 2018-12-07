@@ -18,7 +18,7 @@ module GitHubStatus
     Contract None => Maybe[String]
     def state
       github
-        .statuses(repo, sha)
+        .statuses(repo, canonical_sha)
         .select { |status| status.context == context }
         .map(&:state)
         .first
