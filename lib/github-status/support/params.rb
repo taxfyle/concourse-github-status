@@ -24,12 +24,12 @@ module GitHubStatus
 
       Contract None => String
       def context
-        @context ||= params.fetch 'context', 'concourse'
+        @context ||= params.fetch 'context', ENV["BUILD_JOB_NAME"]
       end
 
       Contract None => String
       def description
-        @description ||= params.fetch 'description', ''
+        @description ||= params.fetch 'description', "#{ENV["BUILD_JOB_NAME"]} number #{ENV["BUILD_NAME"]}"
       end
 
       Contract None => Array
