@@ -36,6 +36,15 @@ module GitHubStatus
       def statuses
         @statuses ||= params.fetch 'statuses', []
       end
+
+      Contract None => String
+      def target_url
+        url = params.fetch 'target_url', "#{atc_external_url}/builds/#{build_id}"
+        if File.file?(url)
+          url = File.read(url).chomp
+        end
+        @target_url ||= url
+      end
     end
   end
 end

@@ -22,8 +22,8 @@ module GitHubStatus
         statuses.map do |status|
           options = {
             context: status["context"] || "concourse",
-            target_url: target_url,
-            description: status["description"] || ""
+            description: status["description"] || "",
+            target_url: status["target_url"] || "#{atc_external_url}/builds/#{build_id}"
           }
           github.create_status repo, canonical_sha, status["state"], options
         end
@@ -36,11 +36,6 @@ module GitHubStatus
     Contract None => HashOf[String, String]
     def version
       { 'context@sha' => "#{context}@#{canonical_sha}" }
-    end
-
-    Contract None => String
-    def target_url
-      @target_url ||= "#{atc_external_url}/builds/#{build_id}"
     end
 
     Contract None => HashOf[Symbol, String]
