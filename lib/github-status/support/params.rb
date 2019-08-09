@@ -40,8 +40,8 @@ module GitHubStatus
       Contract None => String
       def target_url
         url = params.fetch 'target_url', "#{atc_external_url}/builds/#{build_id}"
-        if File.file?(url)
-          url = File.read(url).chomp
+        if File.file?("#{workdir}/#{url}")
+          url = File.read("#{workdir}/#{url}").chomp
         end
         @target_url ||= url
       end
