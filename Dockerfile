@@ -1,11 +1,11 @@
-FROM colstrom/concourse-fuselage
+FROM ruby:3-alpine3.16
 
-RUN apk-install git ca-certificates libressl-dev \
+RUN apk add git ca-certificates libressl-dev \
     && update-ca-certificates \
     && apk update \
     && apk del openssl-dev \
     && rm -vf /var/cache/apk/* \
-    && gem-install concourse-github-status
+    && gem install concourse-github-status
 
 WORKDIR /opt/resource
 
